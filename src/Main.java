@@ -15,6 +15,18 @@ public class Main {
                 resultMap.entrySet()) {
             System.out.println("key - " + entry.getKey() + ", value - " + entry.getValue());
         }
+        //формируем Map<Integer, String> для вывода в порядке добавления
+        Map<Integer, String> linkedMap = new LinkedHashMap<>();
+        Random random = new Random();
+        int i = 1;
+        while (linkedMap.size() < 10) {//теоретически возможно совпадение ключа, для этого повторяемся в цикле до получения нужного наполнения Map
+            linkedMap.put(random.nextInt(10000), "value"+i);
+            i++;
+        }
+        for (Map.Entry<Integer, String> entry :
+                linkedMap.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
     }
 
     private static void fillRandomMap() {
